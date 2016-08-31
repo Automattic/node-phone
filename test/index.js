@@ -815,7 +815,6 @@ describe('Testing RUS Phone Quick Test', function() {
 
 });
 
-
 describe('Testing THA Phone Quick Test', function() {
 
 	describe('Test 1', function() {
@@ -847,7 +846,6 @@ describe('Testing THA Phone Quick Test', function() {
 
 });
 
-
 describe('Testing TZA Phone Quick Test', function() {
 
 	describe('Test 1', function() {
@@ -872,6 +870,19 @@ describe('Testing TZA Phone Quick Test', function() {
 		var number = '714795861',
 			country = 'TZA',
 			result = ['+255714795861', 'TZA'];
+		it('returns ' + result, function() {
+			phone(number, country).should.eql(result);
+		});
+	});
+});
+
+describe('Testing Trinidad and Tobago Numbers', function() {
+
+	describe('Test 1', function() {
+		var number = '+18683408244', // remove the leading 0
+			country = 'TTO',
+			result = ['+18683408244', 'TTO'];
+
 		it('returns ' + result, function() {
 			phone(number, country).should.eql(result);
 		});
