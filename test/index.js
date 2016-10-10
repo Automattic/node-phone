@@ -1,4 +1,5 @@
 var should = require('should'),
+	examples = require('./examples'),
 	phone = require('../lib/index');
 
 /* suggest 10 test case for each country, except USA
@@ -32,6 +33,26 @@ var should = require('should'),
  */
 
 
+describe('Example cases', function() {
+	examples.forEach(function(country) {
+		describe( country.code, function() {
+			if (country.valid) {
+				country.valid.forEach(function(validNumber){
+					it(validNumber + ' is valid', function() {
+						phone(validNumber, country.code).should.eql([validNumber, country.code]);
+					});
+				})
+			}
+			if(country.invalid) {
+				country.invalid.forEach(function(invalidNumber){
+					it(invalidNumber + ' is not valid', function() {
+						phone(invalidNumber, country.code).should.eql([]);
+					});
+				})
+			}
+		} );
+	});
+});
 
 describe('Testing input parameter Phone', function() {
 
@@ -889,14 +910,4 @@ describe('Testing Trinidad and Tobago Numbers', function() {
 		});
 	});
 
-});
-
-describe('Testing ARG Mobile', function() {
-	var number = '+5412345678', // remove the leading 0
-		country = 'ARG',
-		result = ['+5412345678', 'ARG'];
-
-	it('returns ' + result, function() {
-		phone(number, country).should.eql(result);
-	});
 });
