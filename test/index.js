@@ -890,3 +890,13 @@ describe('Testing Trinidad and Tobago Numbers', function() {
 	});
 
 });
+
+describe('Testing ARG Mobile', function() {
+	var number = '+5412345678', // remove the leading 0
+		country = 'ARG',
+		result = ['+5412345678', 'ARG'];
+
+	it('returns ' + result, function() {
+		phone(number, country).should.eql(result);
+	});
+});
