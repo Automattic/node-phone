@@ -1003,6 +1003,36 @@ describe('Testing CHN Phone Quick Test', () => {
         });
     });
 
+});
 
+describe( 'Testing MMR Phone', () => {
+	describe('Test for 9 digits mobile numbers ', () => {
+		const number = '+95 9 1234567';
+		const result = ['+9591234567', 'MMR'];
+		test('returns ' + result, () => {
+			expect(phone(number)).toEqual(result);
+		});
+	});
+	describe('Test for 11 digits mobile numbers ', () => {
+		const number = '+95 9 123456789';
+		const result = ['+959123456789', 'MMR'];
+		test('returns ' + result, () => {
+			expect(phone(number)).toEqual(result);
+		});
+	});
+	describe('Test 10 digits mobile numbers', () => {
+		const number = '+95 9 12345678'; //Landlines
+		const result = [];
+		test('returns ' + result, () => {
+			expect(phone(number)).toEqual(result);
+		});
+	});
 
+	describe('Test land lines', () => {
+		const number = '+95 1 1234567'; //Landlines
+		const result = [];
+		test('returns ' + result, () => {
+			expect(phone(number)).toEqual(result);
+		});
+	});
 });
