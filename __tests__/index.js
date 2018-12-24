@@ -1008,22 +1008,62 @@ describe('Testing GRL numbers', () => {
 	describe('Test for numbers starting with 5', () => {
 		const number = '+299 555299';
 		const result = ['+299555299', 'GRL'];
+
 		test('returns ' + result, () => {
 			expect(phone(number)).toEqual(result);
 		});
 	});
+
 	describe('Test for numbers starting with 2', () => {
 		const number = '+299 233299';
 		const result = ['+299233299', 'GRL'];
+
 		test('returns ' + result, () => {
 			expect(phone(number)).toEqual(result);
 		});
 	});
+
 	describe('Test for landlines', () => {
 		const number = '+299 321000';
+
 		const result = [];
 		test('returns ' + result, () => {
 			expect(phone(number)).toEqual(result);
 		});
 	});
 });
+
+describe( 'Testing MMR Phone', () => {
+	describe('Test for 8 digits mobile numbers ', () => {
+		const number = '+95 9 55 00000';
+		const result = ['+9595500000', 'MMR'];
+		test('returns ' + result, () => {
+			expect(phone(number)).toEqual(result);
+		});
+	});
+
+	describe('Test for 9 digits mobile numbers ', () => {
+		const number = '+95 9 30 000 000';
+		const result = ['+95930000000', 'MMR'];
+		test('returns ' + result, () => {
+			expect(phone(number)).toEqual(result);
+		});
+	});
+
+	describe('Test 10 digits mobile numbers', () => {
+		const number = '+95 9 426 00 0000';
+		const result = ['+959426000000', 'MMR'];
+		test('returns ' + result, () => {
+			expect(phone(number)).toEqual(result);
+		});
+	});
+
+	describe('Test land lines', () => {
+		const number = '+95 1 1234567';
+		const result = [];
+		test('returns ' + result, () => {
+			expect(phone(number)).toEqual(result);
+		});
+	});
+});
+
